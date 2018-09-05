@@ -27,7 +27,7 @@ React 起源于 Facebook 的内部项目，因为该公司对市场上所有 Jav
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">单页应用</h3>
+    <h3 class="subtitle">React介绍</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -44,26 +44,78 @@ React 起源于 Facebook 的内部项目，因为该公司对市场上所有 Jav
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">单页应用</h1>
+        <h1 class="title">React介绍</h1>
         <div class="stuff">
-            <span>十二月 20, 2017</span>
+            <span>一月 24, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/web-app/">web app</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/框架/">框架</a></li></ul>
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/react/">react</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/框架/">框架</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <h2 id="什么是单页应用"><a href="#什么是单页应用" class="headerlink" title="什么是单页应用"></a>什么是单页应用</h2><p>单页Web应用（single page web application，SPA），就是只有一张Web页面的应用，是加载单个HTML 页面并在用户与应用程序交互时动态更新该页面的Web应用程序，是指在浏览器中运行的应用，它们在使用期间不会重新加载页面。像所有的应用一样，它旨在帮助用户完成任务，比如“编写文档”或者“管理Web服务器”。可以认为单页应用是一种从Web服务器加载的富客户端。</p>
-<p>一个单页面Web应用程序就是一个Web应用程序，但结构不同。其中最重要的是：在第一次请求的时候，所有的标记语言（HTML）就已经传输到客户端，其余的请求都通过REST API获取JSON数据，数据的传输通过Web Socket API或远程过程调用。单页面应用程序可以说是分拆Web技术的最后一步——通过分离(css)内容，改进架构（XML和 XSLT）上的灵活性，调用服务器（AJAX）再到解压应用程序的导航页面结构。因此，这在Web发展中是个历史性的转折点。</p>
-<h2 id="单页面优点"><a href="#单页面优点" class="headerlink" title="单页面优点"></a>单页面优点</h2><ul>
-<li>具有桌面应用的即时性、网站的可移植性和可访问性。</li>
-<li>用户体验好、快，内容的改变不需要重新加载整个页面，web应用更具响应性和更令人着迷。</li>
-<li>基于上面一点，SPA相对对服务器压力小。</li>
-<li>良好的前后端分离。SPA和RESTful架构一起使用，后端不再负责模板渲染、输出页面工作，web前端和各种移动终端地位对等，后端API通用化。</li>
-<li>对前端人员javascript技能要求更高，促使团队技能提升。</li>
+            <h2 id="什么是react"><a href="#什么是react" class="headerlink" title="什么是react"></a>什么是react</h2><p><img src="/images/react.png" alt="bg2015033101"></p>
+<p>React 起源于 Facebook 的内部项目，因为该公司对市场上所有 JavaScript MVC 框架，都不满意，就决定自己写一套。做出来以后，发现这套东西很好用，就在2013年5月开源了。</p>
+<p>特点：</p>
+<ul>
+<li>Facebook出品，专注View层</li>
+<li>一切皆组件</li>
+<li>全部使用ES6语法</li>
 </ul>
-<h2 id="架构对比"><a href="#架构对比" class="headerlink" title="架构对比"></a>架构对比</h2><p><img src="/images/多页.png" alt="多页"></p>
-<p><img src="/images/对比.png" alt="对比"></p>
+<h2 id="上demo"><a href="#上demo" class="headerlink" title="上demo"></a>上demo</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><h5 id="nodejs环境"><a href="#nodejs环境" class="headerlink" title="nodejs环境"></a>nodejs环境</h5><p>大家很熟悉，就不说了</p>
+<h5 id="create-react-app"><a href="#create-react-app" class="headerlink" title="create-react-app"></a><code>create-react-app</code></h5><p>为了快速地进行构建使用 React 的项目，FaceBook 官方发布了一个无需配置的、用于快速构建开发环境的脚手架工具 create-react-app</p>
+<p>使用的原因以及特性：</p>
+<ul>
+<li>无需配置</li>
+<li>集成了对 React, JSX, ES6 和 Flow 的支持；</li>
+<li>集成了开发服务器；</li>
+<li>配置好了浏览器热加载的功能</li>
+<li>在js中可以直接import CSS和图片</li>
+<li>自动处理CSS兼容问题，无需添加<code>-webkit</code>前缀</li>
+<li>集成好了编译命令，编译后直接发布成产品，并且还包含了 sourcemaps。</li>
+</ul>
+<h5 id="create-react-app-的安装"><a href="#create-react-app-的安装" class="headerlink" title="create-react-app 的安装"></a>create-react-app 的安装</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br></pre></td></tr></table></figure>
+<h5 id="生成项目"><a href="#生成项目" class="headerlink" title="生成项目"></a>生成项目</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">create-react-app helloworld</span><br></pre></td></tr></table></figure>
+<h5 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h5><p>安装后执行运行命令 <code>npm start</code> 即可在浏览器看到运行后的结果，并且已经实现了热加载的功能。</p>
+<h3 id="React-Hello-World介绍"><a href="#React-Hello-World介绍" class="headerlink" title="React  Hello World介绍"></a>React  Hello World介绍</h3><ul>
+<li>import React</li>
+</ul>
+<p><img src="/images/react-hello.png" alt="image"></p>
+<ul>
+<li><p>class语法新建组件，render里直接使用</p>
+</li>
+<li><p>render函数返回值就是输出JSX语法，会把JSX转成js执行</p>
+</li>
+</ul>
+<h4 id="React的View层语法-JSX语法"><a href="#React的View层语法-JSX语法" class="headerlink" title="React的View层语法(JSX语法)"></a>React的View层语法(JSX语法)</h4><ul>
+<li>Js里直接写html</li>
+<li>class要写成className</li>
+<li>变量用{}包裹即可</li>
+</ul>
+<h4 id="组件之间传递数据"><a href="#组件之间传递数据" class="headerlink" title="组件之间传递数据"></a>组件之间传递数据</h4><ul>
+<li>使用&lt;组件 数据=“值”&gt; 的形式传递</li>
+<li>组件里使用this.props获取值</li>
+<li>如果组件里只有render函数，还可以用函数的形式写组件</li>
+</ul>
+<h4 id="组件内部状态管理"><a href="#组件内部状态管理" class="headerlink" title="组件内部状态管理"></a>组件内部状态管理</h4><p>组件内部通过state管理状态</p>
+<ul>
+<li>JSX本质就是js，所以直接数组.map渲染列表</li>
+<li>Constructor设置初始状态，记得执行super(props)</li>
+<li>如state就是一个不可变的对象，使用this.state获取</li>
+</ul>
+<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><h5 id="onClick点击事件"><a href="#onClick点击事件" class="headerlink" title="onClick点击事件"></a>onClick点击事件</h5><ul>
+<li>JSX里，onClick={this.函数名}来绑定事件</li>
+<li>this引用的问题，需要在构造函数里用bind绑定this</li>
+<li>this.setState修改state，记得返回新的state，而不是修改</li>
+</ul>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p>React组件有若干钩子函数，在组件不同的状态执行</p>
+<ul>
+<li>初始化周期</li>
+<li>组件重新渲染生命周期</li>
+<li>组件卸载生命周期</li>
+</ul>
+<p><img src="/images/react-init.png" alt="image"></p>
+<p><img src="/images/react-life.png" alt="image"></p>
+<h3 id="安装-chrome-react扩展"><a href="#安装-chrome-react扩展" class="headerlink" title="安装  chrome react扩展"></a>安装  chrome react扩展</h3><p><img src="/images/react-chrome.png" alt="image"></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
