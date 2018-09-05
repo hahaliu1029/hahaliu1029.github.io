@@ -21,96 +21,82 @@
 
 <body class="loading">
     <div id="loader"></div>
-    <div class="nav">
-    <ul id="menu-menu" class="menu">
-        
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/whoami/" title="Whoami" target="_blank" rel="noopener">Whoami</a>
-        </li>
-        
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://github.com/Fechin" title="Github" target="_blank" rel="noopener">Github</a>
-        </li>
-        
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://twitter.com/FechinLi" title="Twitter" target="_blank" rel="noopener">Twitter</a>
-        </li>
-        
-    </ul>
-    <p id="copyright">
-        &copy; 2018 John Doe.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a>
-        by Fechin
-    </p>
-</div>
-
-<div id="container">
-    
-<div id="screen">
-    <div id="mark">
-        <div class="layer" data-depth="0.4">
-            <img src="/img/welcome-cover.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
-        </div>
-    </div>
-    <div id="vibrant">
-        <svg viewBox="0 0 2880 1620" height="100%" preserveAspectRatio="xMaxYMax slice">
-            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
-        </svg>
-        <div></div>
-    </div>
-    <div id="header">
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">单页应用</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
         <div>
-            <a class="image-logo" href="/"></a>
-            <div class="icon-menu switchmenu"></div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
         </div>
     </div>
-    
-    <div id="post0">
-        <p>九月 05, 2018</p>
-        <h2><a href="/2018/09/05/虚拟DOM/" title="虚拟DOM" class="posttitle">虚拟DOM</a></h2>
-        <p class="summary">什么是虚拟DOM虚拟DOM保存了真实DOM的层次关系和一些基本属性，与真实DOM一一对应。虚拟DOM的工作原理是：...</p>
-    </div>
-    
+    <div class="scrollbar"></div>
 </div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">单页应用</h1>
+        <div class="stuff">
+            <span>十二月 20, 2017</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/web-app/">web app</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/框架/">框架</a></li></ul>
 
-    <div id="primary">
+
+        </div>
+        <div class="content markdown">
+            <h2 id="什么是单页应用"><a href="#什么是单页应用" class="headerlink" title="什么是单页应用"></a>什么是单页应用</h2><p>单页Web应用（single page web application，SPA），就是只有一张Web页面的应用，是加载单个HTML 页面并在用户与应用程序交互时动态更新该页面的Web应用程序，是指在浏览器中运行的应用，它们在使用期间不会重新加载页面。像所有的应用一样，它旨在帮助用户完成任务，比如“编写文档”或者“管理Web服务器”。可以认为单页应用是一种从Web服务器加载的富客户端。</p>
+<p>一个单页面Web应用程序就是一个Web应用程序，但结构不同。其中最重要的是：在第一次请求的时候，所有的标记语言（HTML）就已经传输到客户端，其余的请求都通过REST API获取JSON数据，数据的传输通过Web Socket API或远程过程调用。单页面应用程序可以说是分拆Web技术的最后一步——通过分离(css)内容，改进架构（XML和 XSLT）上的灵活性，调用服务器（AJAX）再到解压应用程序的导航页面结构。因此，这在Web发展中是个历史性的转折点。</p>
+<h2 id="单页面优点"><a href="#单页面优点" class="headerlink" title="单页面优点"></a>单页面优点</h2><ul>
+<li>具有桌面应用的即时性、网站的可移植性和可访问性。</li>
+<li>用户体验好、快，内容的改变不需要重新加载整个页面，web应用更具响应性和更令人着迷。</li>
+<li>基于上面一点，SPA相对对服务器压力小。</li>
+<li>良好的前后端分离。SPA和RESTful架构一起使用，后端不再负责模板渲染、输出页面工作，web前端和各种移动终端地位对等，后端API通用化。</li>
+<li>对前端人员javascript技能要求更高，促使团队技能提升。</li>
+</ul>
+<h2 id="架构对比"><a href="#架构对比" class="headerlink" title="架构对比"></a>架构对比</h2><p><img src="/images/多页.png" alt="多页"></p>
+<p><img src="/images/对比.png" alt="对比"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
         
-<div class="post">
-    <a href="/2017/12/21/XXX-H5框架选型/" title="XXX H5框架选型">
-        <img src="/img/cover.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十二月 21, 2017</p>
-        <h3><a href="/2017/12/21/XXX-H5框架选型/" title="XXX H5框架选型" class="posttitle">XXX H5框架选型</a></h3>
-        <p>XXX H5框架选型背景
-目前XXX前端技术较为落后，处于刀耕火种的时代
-H5原先框架问题问题较多，维护成本高
-
-目标
-提高XXX前端竞争力
-解决现有H5...</p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2017/12/20/单页应用/" title="单页应用">
-        <img src="/img/cover.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>十二月 20, 2017</p>
-        <h3><a href="/2017/12/20/单页应用/" title="单页应用" class="posttitle">单页应用</a></h3>
-        <p>什么是单页应用单页Web应用（single page web application，SPA），就是只有一张Web页面的应用，是加载单个HTML 页面并在...</p>
-    </div>
-</div>
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
 </div>
-<div id="preview"></div>
 
+
+    </div>
+</div>
 </body>
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>

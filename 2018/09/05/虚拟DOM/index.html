@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>刘哈哈 - 个人博客</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="什么是虚拟DOM虚拟DOM保存了真实DOM的层次关系和一些基本属性，与真实DOM一一对应。虚拟DOM的工作原理是：数据 -&amp;gt; 全新的虚拟DOM -&amp;gt; 与上一个状态的虚拟DOM进行diff,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="刘哈哈" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">虚拟DOM</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">虚拟DOM</h1>
+        <div class="stuff">
+            <span>九月 05, 2018</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="什么是虚拟DOM"><a href="#什么是虚拟DOM" class="headerlink" title="什么是虚拟DOM"></a>什么是虚拟DOM</h2><p>虚拟DOM保存了真实DOM的层次关系和一些基本属性，与真实DOM一一对应。虚拟DOM的工作原理是：数据 -&gt; 全新的虚拟DOM -&gt; 与上一个状态的虚拟DOM进行diff算法比较，得到一个Patch -&gt; 把这个Patch打到浏览器的DOM上</p>
+<h2 id="如何理解虚拟DOM"><a href="#如何理解虚拟DOM" class="headerlink" title="如何理解虚拟DOM"></a>如何理解虚拟DOM</h2><h3 id="对前端应用状态管理的思考"><a href="#对前端应用状态管理的思考" class="headerlink" title="对前端应用状态管理的思考"></a>对前端应用状态管理的思考</h3><p>假如现在你需要写一个像下面一样的表格的应用程序，这个表格可以根据不同的字段进行升序或者降序的展示。</p>
+<p><img src="/images/状态管理表格.jpg" alt="状态管理表格"></p>
+<p>这个应用程序看起来很简单，你可以想出好几种不同的方式来写。最容易想到的可能是，在你的 JavaScript 代码里面存储这样的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var sortKey = &quot;new&quot; // 排序的字段，新增（new）、取消（cancel）、净关注（gain）、累积（cumulate）人数</span><br><span class="line">var sortType = 1 // 升序还是逆序</span><br><span class="line">var data = [&#123;...&#125;, &#123;...&#125;, &#123;..&#125;, ..] // 表格数据</span><br></pre></td></tr></table></figure>
+<p>用三个字段分别存储当前排序的字段、排序方向、还有表格数据；然后给表格头部加点击事件：当用户点击特定的字段的时候，根据上面几个字段存储的内容来对内容进行排序，然后用 JS 或者 jQuery 操作 DOM，更新页面的排序状态（表头的那几个箭头表示当前排序状态，也需要更新）和表格内容。</p>
+<p>这样做会导致的后果就是，随着应用程序越来越复杂，需要在JS里面维护的字段也越来越多，需要监听事件和在事件回调用更新页面的DOM操作也越来越多，应用程序会变得非常难维护。</p>
+<p>既然状态改变了要操作相应的DOM元素，为什么不做一个东西可以让视图和状态进行绑定，状态变更了视图自动变更，就不用手动更新页面了。(MVVM架构)</p>
+<p>MVVM 可以很好的降低我们维护状态 -&gt; 视图的复杂程度（大大减少代码中的视图更新逻辑）。但是这不是唯一的办法，还有一个非常直观的方法，可以大大降低视图更新的操作：一旦状态发生了变化，就用模版引擎重新渲染整个视图，然后用新的视图更换掉旧的视图。就像上面的表格，当用户点击的时候，还是在JS里面更新状态，但是页面更新就不用手动操作 DOM 了，直接把整个表格用模版引擎重新渲染一遍，然后设置一下innerHTML就完事了。</p>
+<p>这样做导致的问题：</p>
+<p>最大的问题就是这样做会很慢，因为即使一个小小的状态变更都要重新构造整棵 DOM，性价比太低；而且这样做的话，input和textarea的会失去原有的焦点。最后的结论会是：对于局部的小视图的更新，没有问题（Backbone就是这么干的）；但是对于大型视图，如全局应用状态变更的时候，需要更新页面较多局部视图的时候，这样的做法不可取。</p>
+<p>而这样做提供给我们一个思路：</p>
+<p>维护状态，更新视图，再加上一些步骤避免变更整个DOM树就可以解决问题了吧（Virtual DOM算法）</p>
+<h3 id="Virtual-DOM算法"><a href="#Virtual-DOM算法" class="headerlink" title="Virtual DOM算法"></a>Virtual DOM算法</h3><p>DOM是很慢的。如果我们把一个简单的div元素的属性都打印出来，你会看到：</p>
+<p><img src="/images/dom.png" alt="dom"></p>
+<p>而这仅仅是第一层。真正的 DOM 元素非常庞大，这是因为标准就是这么设计的。而且操作它们的时候你要小心翼翼，轻微的触碰可能就会导致页面重排，这可是杀死性能的罪魁祸首。</p>
+<p>相对于 DOM 对象，原生的 JavaScript 对象处理起来更快，而且更简单。DOM 树上的结构、属性信息我们都可以很容易地用 JavaScript 对象表示出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var element = &#123;</span><br><span class="line">  tagName: &apos;ul&apos;, // 节点标签名</span><br><span class="line">  props: &#123; // DOM的属性，用一个对象存储键值对</span><br><span class="line">    id: &apos;list&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  children: [ // 该节点的子节点</span><br><span class="line">    &#123;tagName: &apos;li&apos;, props: &#123;class: &apos;item&apos;&#125;, children: [&quot;Item 1&quot;]&#125;,</span><br><span class="line">    &#123;tagName: &apos;li&apos;, props: &#123;class: &apos;item&apos;&#125;, children: [&quot;Item 2&quot;]&#125;,</span><br><span class="line">    &#123;tagName: &apos;li&apos;, props: &#123;class: &apos;item&apos;&#125;, children: [&quot;Item 3&quot;]&#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应HTML</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&apos;list&apos;&gt;</span><br><span class="line">  &lt;li class=&apos;item&apos;&gt;Item 1&lt;/li&gt;</span><br><span class="line">  &lt;li class=&apos;item&apos;&gt;Item 2&lt;/li&gt;</span><br><span class="line">  &lt;li class=&apos;item&apos;&gt;Item 3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p>既然原来 DOM 树的信息都可以用 JavaScript 对象来表示，反过来，你就可以根据这个用 JavaScript 对象表示的树结构来构建一棵真正的DOM树。</p>
+<p>用 JavaScript 对象表示 DOM 信息和结构，当状态变更的时候，重新渲染这个 JavaScript 的对象结构,用新渲染的对象树去和旧的树进行对比，记录这两棵树差异。记录下来的不同就是我们需要对页面真正的 DOM 操作，然后把它们应用在真正的 DOM 树上，页面就变更了。这样就可以做到：视图的结构确实是整个全新渲染了，但是最后操作DOM的时候确实只变更有不同的地方。</p>
+<p>这就是 Virtual DOM 算法。包括几个步骤：</p>
+<ol>
+<li>用 JavaScript 对象结构表示 DOM 树的结构；</li>
+<li>然后用这个树构建一个真正的 DOM 树，插到文档当中当状态变更的时候，重新构造一棵新的对象树。</li>
+<li>然后用新的树和旧的树进行比较，记录两棵树差异把2所记录的差异应用到步骤1所构建的真正的DOM树上，视图就更新了</li>
+</ol>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><h4 id="用JS对象模拟DOM树"><a href="#用JS对象模拟DOM树" class="headerlink" title="用JS对象模拟DOM树"></a>用JS对象模拟DOM树</h4><p> 用 JavaScript 来表示一个 DOM 节点是很简单的事情，你只需要记录它的节点类型、属性，还有子节点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// element.js</span><br><span class="line"></span><br><span class="line">function Element (tagName, props, children) &#123;</span><br><span class="line">  this.tagName = tagName</span><br><span class="line">  this.props = props</span><br><span class="line">  this.children = children</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = function (tagName, props, children) &#123;</span><br><span class="line">  return new Element(tagName, props, children)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的DOM结构可以简单表示为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var el = require(&apos;./element&apos;)</span><br><span class="line"></span><br><span class="line">var ul = el(&apos;ul&apos;, &#123;id: &apos;list&apos;&#125;, [</span><br><span class="line">  el(&apos;li&apos;, &#123;class: &apos;item&apos;&#125;, [&apos;Item 1&apos;]),</span><br><span class="line">  el(&apos;li&apos;, &#123;class: &apos;item&apos;&#125;, [&apos;Item 2&apos;]),</span><br><span class="line">  el(&apos;li&apos;, &#123;class: &apos;item&apos;&#125;, [&apos;Item 3&apos;])</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>现在只是一个js对象表示的DOM结构，我们可以根据这个ul构建真正的<ul></ul></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Element.prototype.render = function () &#123;</span><br><span class="line">  var el = document.createElement(this.tagName) // 根据tagName构建</span><br><span class="line">  var props = this.props</span><br><span class="line"></span><br><span class="line">  for (var propName in props) &#123; // 设置节点的DOM属性</span><br><span class="line">    var propValue = props[propName]</span><br><span class="line">    el.setAttribute(propName, propValue)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  var children = this.children || []</span><br><span class="line"></span><br><span class="line">  children.forEach(function (child) &#123;</span><br><span class="line">    var childEl = (child instanceof Element)</span><br><span class="line">      ? child.render() // 如果子节点也是虚拟DOM，递归构建DOM节点</span><br><span class="line">      : document.createTextNode(child) // 如果字符串，只构建文本节点</span><br><span class="line">    el.appendChild(childEl)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  return el</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>render方法会根据tagName构建一个真正的DOM节点，然后设置这个节点的属性，最后递归地把自己的子节点也构建起来。所以只需要：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var ulRoot = ul.render()</span><br><span class="line">document.body.appendChild(ulRoot)</span><br></pre></td></tr></table></figure>
+<p>上面的ulRoot是真正的DOM节点，把它塞入文档中，这样body里面就有了真正的<ul>的DOM结构：</ul></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&apos;list&apos;&gt;</span><br><span class="line">  &lt;li class=&apos;item&apos;&gt;Item 1&lt;/li&gt;</span><br><span class="line">  &lt;li class=&apos;item&apos;&gt;Item 2&lt;/li&gt;</span><br><span class="line">  &lt;li class=&apos;item&apos;&gt;Item 3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="比较两棵虚拟DOM树的差异"><a href="#比较两棵虚拟DOM树的差异" class="headerlink" title="比较两棵虚拟DOM树的差异"></a>比较两棵虚拟DOM树的差异</h4><p>比较两棵DOM树的差异是 Virtual DOM 算法最核心的部分，这也是所谓的 Virtual DOM 的 diff 算法。两个树的完全的 diff 算法是一个时间复杂度为 O(n^3) 的问题。但是在前端当中，你很少会跨越层级地移动DOM元素。所以 Virtual DOM 只会对同一个层级的元素进行对比：</p>
+<p><img src="/images/domtree.jpg" alt="domtree"></p>
+<p>上面的div只会和同一层级的div对比，第二层级的只会跟第二层级对比。这样算法复杂度就可以达到 O(n)。</p>
+<h5 id="深度优先遍历，记录差异"><a href="#深度优先遍历，记录差异" class="headerlink" title="深度优先遍历，记录差异"></a>深度优先遍历，记录差异</h5><p>在实际的代码中，会对新旧两棵树进行一个深度优先的遍历，这样每个节点都会有一个唯一的标记：</p>
+<p><img src="/images/domtree2.jpg" alt="domtree2"></p>
+<p>在深度优先遍历的时候，每遍历到一个节点就把该节点和新的的树进行对比。如果有差异的话就记录到一个对象里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// diff 函数，对比两棵树</span><br><span class="line">function diff (oldTree, newTree) &#123;</span><br><span class="line">  var index = 0 // 当前节点的标志</span><br><span class="line">  var patches = &#123;&#125; // 用来记录每个节点差异的对象</span><br><span class="line">  dfsWalk(oldTree, newTree, index, patches)</span><br><span class="line">  return patches</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 对两棵树进行深度优先遍历</span><br><span class="line">function dfsWalk (oldNode, newNode, index, patches) &#123;</span><br><span class="line">  // 对比oldNode和newNode的不同，记录下来</span><br><span class="line">  patches[index] = [...]</span><br><span class="line"></span><br><span class="line">  diffChildren(oldNode.children, newNode.children, index, patches)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 遍历子节点</span><br><span class="line">function diffChildren (oldChildren, newChildren, index, patches) &#123;</span><br><span class="line">  var leftNode = null</span><br><span class="line">  var currentNodeIndex = index</span><br><span class="line">  oldChildren.forEach(function (child, i) &#123;</span><br><span class="line">    var newChild = newChildren[i]</span><br><span class="line">    currentNodeIndex = (leftNode &amp;&amp; leftNode.count) // 计算节点的标识</span><br><span class="line">      ? currentNodeIndex + leftNode.count + 1</span><br><span class="line">      : currentNodeIndex + 1</span><br><span class="line">    dfsWalk(child, newChild, currentNodeIndex, patches) // 深度遍历子节点</span><br><span class="line">    leftNode = child</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例如，上面的div和新的div有差异，当前的标记是0，那么：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">patches[0] = [&#123;difference&#125;, &#123;difference&#125;, ...] // 用数组存储新旧节点的不同</span><br></pre></td></tr></table></figure>
+<p>同理p是patches[1]，ul是patches[3]，类推。</p>
+<h5 id="差异类型"><a href="#差异类型" class="headerlink" title="差异类型"></a>差异类型</h5><p>上面说的节点的差异指的是什么呢？对 DOM 操作可能会：</p>
+<ul>
+<li>替换掉原来的节点，例如把上面的div换成了section</li>
+<li>移动、删除、新增子节点，例如上面div的子节点，把p和ul顺序互换</li>
+<li>修改了节点的属性</li>
+<li>对于文本节点，文本内容可能会改变。例如修改上面的文本节点2内容为Virtual DOM 2。</li>
+</ul>
+<p>所以我们定义了几种差异类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var REPLACE = 0</span><br><span class="line">var REORDER = 1</span><br><span class="line">var PROPS = 2</span><br><span class="line">var TEXT = 3</span><br></pre></td></tr></table></figure>
+<p>对于节点替换，很简单。判断新旧节点的tagName和是不是一样的，如果不一样的说明需要替换掉。如div换成section，就记录下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">patches[0] = [&#123;</span><br><span class="line">  type: REPALCE,</span><br><span class="line">  node: newNode // el(&apos;section&apos;, props, children)</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<p>如果给div新增了属性id为container，就记录下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">patches[0] = [&#123;</span><br><span class="line">  type: REPALCE,</span><br><span class="line">  node: newNode // el(&apos;section&apos;, props, children)</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  type: PROPS,</span><br><span class="line">  props: &#123;</span><br><span class="line">    id: &quot;container&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<p>如果是文本节点，如上面的文本节点2，就记录下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">patches[2] = [&#123;</span><br><span class="line">  type: TEXT,</span><br><span class="line">  content: &quot;Virtual DOM2&quot;</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<p>那如果把我div的子节点重新排序呢？例如p, ul, div的顺序换成了div, p, ul。这个该怎么对比？如果按照同层级进行顺序对比的话，它们都会被替换掉。如p和div的tagName不同，p会被div所替代。最终，三个节点都会被替换，这样DOM开销就非常大。而实际上是不需要替换节点，而只需要经过节点移动就可以达到，我们只需知道怎么进行移动。</p>
+<p>这牵涉到两个列表的对比算法。</p>
+<h5 id="列表对比算法"><a href="#列表对比算法" class="headerlink" title="列表对比算法"></a>列表对比算法</h5><p>假设现在可以英文字母唯一地标识每一个子节点：</p>
+<p>旧的节点顺序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a b c d e f g h i</span><br></pre></td></tr></table></figure></p>
+<p>现在对节点进行了删除、插入、移动的操作。新增j节点，删除e节点，移动h节点：</p>
+<p>新的节点顺序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a b c h d f g i j</span><br></pre></td></tr></table></figure>
+<p>现在知道了新旧的顺序，求最小的插入、删除操作（移动可以看成是删除和插入操作的结合）。这个问题抽象出来其实是字符串的最小编辑距离问题（<a href="https://en.wikipedia.org/wiki/Edit_distance" target="_blank" rel="noopener">Edition Distance</a>），最常见的解决算法是 <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" target="_blank" rel="noopener">Levenshtein Distance</a>，通过动态规划求解，时间复杂度为 O(M * N)。</p>
+<p>我们能够获取到某个父节点的子节点的操作，就可以记录下来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">patches[0] = [&#123;</span><br><span class="line">  type: REORDER,</span><br><span class="line">  moves: [&#123;remove or insert&#125;, &#123;remove or insert&#125;, ...]</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<p>但是要注意的是，因为tagName是可重复的，不能用这个来进行对比。所以需要给子节点加上唯一标识key，列表对比的时候，使用key进行对比，这样才能复用老的 DOM 树上的节点。</p>
+<p>这样，我们就可以通过深度优先遍历两棵树，每层的节点进行对比，记录下每个节点的差异了。</p>
+<h4 id="把差异应用到真正的DOM树上"><a href="#把差异应用到真正的DOM树上" class="headerlink" title="把差异应用到真正的DOM树上"></a>把差异应用到真正的DOM树上</h4><p>因为步骤一所构建的 JavaScript 对象树和render出来真正的DOM树的信息、结构是一样的。所以我们可以对那棵DOM树也进行深度优先的遍历，遍历的时候从步骤二生成的patches对象中找出当前遍历的节点差异，然后进行 DOM 操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function patch (node, patches) &#123;</span><br><span class="line">  var walker = &#123;index: 0&#125;</span><br><span class="line">  dfsWalk(node, walker, patches)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function dfsWalk (node, walker, patches) &#123;</span><br><span class="line">  var currentPatches = patches[walker.index] // 从patches拿出当前节点的差异</span><br><span class="line"></span><br><span class="line">  var len = node.childNodes</span><br><span class="line">    ? node.childNodes.length</span><br><span class="line">    : 0</span><br><span class="line">  for (var i = 0; i &lt; len; i++) &#123; // 深度遍历子节点</span><br><span class="line">    var child = node.childNodes[i]</span><br><span class="line">    walker.index++</span><br><span class="line">    dfsWalk(child, walker, patches)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (currentPatches) &#123;</span><br><span class="line">    applyPatches(node, currentPatches) // 对当前节点进行DOM操作</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>applyPatches，根据不同类型的差异对当前节点进行 DOM 操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function applyPatches (node, currentPatches) &#123;</span><br><span class="line">  currentPatches.forEach(function (currentPatch) &#123;</span><br><span class="line">    switch (currentPatch.type) &#123;</span><br><span class="line">      case REPLACE:</span><br><span class="line">        node.parentNode.replaceChild(currentPatch.node.render(), node)</span><br><span class="line">        break</span><br><span class="line">      case REORDER:</span><br><span class="line">        reorderChildren(node, currentPatch.moves)</span><br><span class="line">        break</span><br><span class="line">      case PROPS:</span><br><span class="line">        setProps(node, currentPatch.props)</span><br><span class="line">        break</span><br><span class="line">      case TEXT:</span><br><span class="line">        node.textContent = currentPatch.content</span><br><span class="line">        break</span><br><span class="line">      default:</span><br><span class="line">        throw new Error(&apos;Unknown patch type &apos; + currentPatch.type)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Virtual-DOM-算法主要是实现上面步骤的三个函数：element，diff，patch。"><a href="#Virtual-DOM-算法主要是实现上面步骤的三个函数：element，diff，patch。" class="headerlink" title="Virtual DOM 算法主要是实现上面步骤的三个函数：element，diff，patch。"></a>Virtual DOM 算法主要是实现上面步骤的三个函数：element，diff，patch。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 1. 构建虚拟DOM</span><br><span class="line">var tree = el(&apos;div&apos;, &#123;&apos;id&apos;: &apos;container&apos;&#125;, [</span><br><span class="line">    el(&apos;h1&apos;, &#123;style: &apos;color: blue&apos;&#125;, [&apos;simple virtal dom&apos;]),</span><br><span class="line">    el(&apos;p&apos;, [&apos;Hello, virtual-dom&apos;]),</span><br><span class="line">    el(&apos;ul&apos;, [el(&apos;li&apos;)])</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">// 2. 通过虚拟DOM构建真正的DOM</span><br><span class="line">var root = tree.render()</span><br><span class="line">document.body.appendChild(root)</span><br><span class="line"></span><br><span class="line">// 3. 生成新的虚拟DOM</span><br><span class="line">var newTree = el(&apos;div&apos;, &#123;&apos;id&apos;: &apos;container&apos;&#125;, [</span><br><span class="line">    el(&apos;h1&apos;, &#123;style: &apos;color: red&apos;&#125;, [&apos;simple virtal dom&apos;]),</span><br><span class="line">    el(&apos;p&apos;, [&apos;Hello, virtual-dom&apos;]),</span><br><span class="line">    el(&apos;ul&apos;, [el(&apos;li&apos;), el(&apos;li&apos;)])</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">// 4. 比较两棵虚拟DOM树的不同</span><br><span class="line">var patches = diff(tree, newTree)</span><br><span class="line"></span><br><span class="line">// 5. 在真正的DOM元素上应用变更</span><br><span class="line">patch(root, patches)</span><br></pre></td></tr></table></figure>
+<p>当然这是非常粗糙的实践，实际中还需要处理事件监听等；生成虚拟 DOM 的时候也可以加入 JSX 语法。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.zhihu.com/question/29504639" target="_blank" rel="noopener">如何理解虚拟DOM?</a></li>
+<li><a href="https://www.zhihu.com/question/31809713" target="_blank" rel="noopener">网上都说操作真实 DOM 慢，但测试结果却比 React 更快，为什么？</a></li>
+<li><a href="http://blog.csdn.net/qiqingjin/article/details/51804138" target="_blank" rel="noopener">为什么要使用虚拟DOM</a></li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
