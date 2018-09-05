@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>刘哈哈 - 个人博客</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="什么是react-nativeReact Native (简称RN)是Facebook于2015年4月开源的跨平台移动应用开发框架，是Facebook早先开源的UI框架 React 在原生移动应用平,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="刘哈哈" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">React-native</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">React-native</h1>
+        <div class="stuff">
+            <span>三月 12, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/react/">react</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="什么是react-native"><a href="#什么是react-native" class="headerlink" title="什么是react-native"></a>什么是react-native</h2><p>React Native (简称RN)是Facebook于2015年4月开源的跨平台移动应用开发框架，是Facebook早先开源的UI框架 React 在原生移动应用平台的衍生产物，目前支持iOS和安卓两大平台。RN使用Javascript语言，类似于HTML的JSX，以及CSS来开发移动应用，因此熟悉Web前端开发的技术人员只需很少的学习就可以进入移动应用开发领域。</p>
+<h2 id="我们为什么要用react-native"><a href="#我们为什么要用react-native" class="headerlink" title="我们为什么要用react-native"></a>我们为什么要用react-native</h2><h3 id="先看一份2017年的数据"><a href="#先看一份2017年的数据" class="headerlink" title="先看一份2017年的数据"></a>先看一份2017年的数据</h3><p><img src="/images/rn-2017.png" alt="image"></p>
+<h3 id="react-native与各个架构的对比图"><a href="#react-native与各个架构的对比图" class="headerlink" title="react-native与各个架构的对比图"></a>react-native与各个架构的对比图</h3><p><img src="/images/rn-compare.png" alt="image"></p>
+<h3 id="目前的现状"><a href="#目前的现状" class="headerlink" title="目前的现状"></a>目前的现状</h3><p><a href="http://gitlab.xxt.cn/lyx19931029666/web-app/wikis/hybrid-%E6%9E%B6%E6%9E%84" target="_blank" rel="noopener">Hybrid app</a></p>
+<p>Hybrid app 本来就有性能不好的缺点<br>通过上面的文档以及个人体验还有app store中的评论可以看出这个问题似乎在我们的app中暴露的特别明显<br>比如目前的白屏问题，各种卡顿问题以及与各个原生页面之间的跳转问题</p>
+<h3 id="react-native的优势"><a href="#react-native的优势" class="headerlink" title="react-native的优势"></a>react-native的优势</h3><h4 id="虽然说开发成本大于Hybrid模式-但是小于原生模式-大部分代码可复用"><a href="#虽然说开发成本大于Hybrid模式-但是小于原生模式-大部分代码可复用" class="headerlink" title="虽然说开发成本大于Hybrid模式,但是小于原生模式,大部分代码可复用"></a>虽然说开发成本大于Hybrid模式,但是小于原生模式,大部分代码可复用</h4><p>相比于原生模式,这种模式是统一用JS写代码,所以往往只需要一名成员投入学习,即可完成跨平台app的开发,而且后续代码封装的好,很多功能可复用</p>
+<h4 id="性能体验高于Hybrid-不逊色与原生"><a href="#性能体验高于Hybrid-不逊色与原生" class="headerlink" title="性能体验高于Hybrid,不逊色与原生"></a>性能体验高于Hybrid,不逊色与原生</h4><p>这种模式和Hybrid不一样,Hybrid中的view层实际上还是dom,但是这种模式的view层是虚拟dom,所以性能要高于Hybrid,距离原生差距不大</p>
+<p>这种模式可以认为是用JS写原生,即页面用JS写,然后原生通过Bridge技术分析JS,将JS内容单独渲染成原生Android和iOS,所以也就是为什么性能不逊色原生</p>
+<h4 id="开发人员单一技术栈-一次学习-跨平台开发"><a href="#开发人员单一技术栈-一次学习-跨平台开发" class="headerlink" title="开发人员单一技术栈,一次学习,跨平台开发"></a>开发人员单一技术栈,一次学习,跨平台开发</h4><p>这种模式是统一由JS编写,有着独特的语法,所以只需要学习一次,即可同时开发Android和iOS</p>
+<h4 id="社区繁荣-遇到问题容易解决"><a href="#社区繁荣-遇到问题容易解决" class="headerlink" title="社区繁荣,遇到问题容易解决"></a>社区繁荣,遇到问题容易解决</h4><p>这应该是React Native的很大一个优势,不像Hybrid模式和原生模式一样各自为营,这种模式是Facebook统一发起的,所以有一个统一的社区,里面有大量资源和活跃的人员,对开发者很友好</p>
+<h3 id="react-native-的劣势"><a href="#react-native-的劣势" class="headerlink" title="react-native 的劣势"></a>react-native 的劣势</h3><h4 id="虽然可以部分跨平台-但并不是Hybrid中的一次编写-两次运行那种-而是不同平台代码有所区别"><a href="#虽然可以部分跨平台-但并不是Hybrid中的一次编写-两次运行那种-而是不同平台代码有所区别" class="headerlink" title="虽然可以部分跨平台,但并不是Hybrid中的一次编写,两次运行那种,而是不同平台代码有所区别"></a>虽然可以部分跨平台,但并不是Hybrid中的一次编写,两次运行那种,而是不同平台代码有所区别</h4><p>这种模式实际上还是JS来写原生,所以Android和iOS中的原生代码会有所区别,如果需要跨平台,对开发人员有一定要求<br>当然了,如果发展了有一定时间,组件库够丰富了,那么其实影响也就不大了,甚至会比Hybrid更快</p>
+<h4 id="开发人员学习有一定成本"><a href="#开发人员学习有一定成本" class="headerlink" title="开发人员学习有一定成本"></a>开发人员学习有一定成本</h4><p>虽然社区已经比较成熟了,但是一个新的普通前端学习起来还是有一定学习成本的,无法像Hybrid模式一样平滑</p>
+<p>可以看出劣势基本都是针对开发人员来说的，反过来说也是对开发人员提出了更高的要求</p>
+<h3 id="react-native如何解决我们现在的问题"><a href="#react-native如何解决我们现在的问题" class="headerlink" title="react native如何解决我们现在的问题"></a>react native如何解决我们现在的问题</h3><p>通过上面的对比以及优劣势的分析，可以看出我们app被诟病的性能问题在用了react native应该是迎刃而解</p>
+<p>但是react Native这种模式学习成本较高,所以需要前期投入不少时间才能达到较好水平,而有了一定水准后,开发起来它的优势就体现出来了,性能不逊色原生,而且开发速度也很快</p>
+<h2 id="标杆"><a href="#标杆" class="headerlink" title="标杆"></a>标杆</h2><h3 id="使用react-native的应用"><a href="#使用react-native的应用" class="headerlink" title="使用react native的应用"></a>使用react native的应用</h3><p><img src="/images/rn-apps.png" alt="image"><br>等等</p>
+<p>详见<a href="https://reactnative.cn/cases.html" target="_blank" rel="noopener">https://reactnative.cn/cases.html</a></p>
+<h2 id="我们应该如何使用react-native"><a href="#我们应该如何使用react-native" class="headerlink" title="我们应该如何使用react-native"></a>我们应该如何使用react-native</h2><p>目前app中H5的部分均可换成react-native（在线课程，天天练，博客等）</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                    
+                        <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
