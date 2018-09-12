@@ -1,449 +1,135 @@
-
-<!DOCTYPE html>
-<html lang="" class="loading">
+<!--
+    Powered By nodeppt - This is probably the best web presentation tool so far!
+    version: 1.4.5
+    site: https://github.com/ksky521/nodeppt
+    date: 
+-->
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>刘哈哈 - 个人博客</title>
-
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate" />
-    <meta name="keywords" content="hahaliu,"> 
+    <meta charset="UTF-8">
+    <title>刘哈哈个人介绍 - By </title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
     
-    <meta name="author" content="John Doe"> 
-    <link rel="alternative" href="atom.xml" title="刘哈哈" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <link rel="stylesheet" href="/css/diaspora.css">
-</head>
-
-<body class="loading">
-    <div id="loader"></div>
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
     
-        <a class="icon-left image-icon" href="javascript:history.back()">aaaa</a>
-                <!DOCTYPE html>
-<html style="height: 100%">
-
-<head>
-  <meta charset="utf-8">
+<link rel="stylesheet" href="./css/theme.moon.css">
 </head>
+<body>
+<div class="slides">
+    <slides id="container">
+        <slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>刘哈哈</h1>
+<h2>前端工程师</h2>
+<img src="./avatar.jpg" height="100" width="100" style="margin:0 auto;border-radius:50%;margin-top:0.5em">
 
-<body style="height: 100%; margin: 0">
-  <div id="container" style="height: 100%"></div>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
-  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
-  <script type="text/javascript">
-    var dom = document.getElementById("container");
-    var myChart = echarts.init(dom);
-    var app = {};
-    option = null;
-    var colors = ['#FFAE57', '#FF7853', '#EA5151', '#CC3F57', '#9A2555'];
-    var bgColor = '#2E2733';
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>个人信息</h2>
 
-    var itemStyle = {
-      star5: {
-        color: colors[0]
-      },
-      star4: {
-        color: colors[1]
-      },
-      star3: {
-        color: colors[2]
-      },
-      star2: {
-        color: colors[3]
-      }
-    };
+</hgroup><article>
 
-    var data = [{
-      name: '虚构',
-      itemStyle: {
-        normal: {
-          color: colors[1]
-        }
-      },
-      children: [{
-        name: '小说',
-        children: [{
-          name: '5☆',
-          children: [{
-            name: '疼'
-          }, {
-            name: '慈悲'
-          }, {
-            name: '楼下的房客'
-          }]
-        }, {
-          name: '4☆',
-          children: [{
-            name: '虚无的十字架'
-          }, {
-            name: '无声告白'
-          }, {
-            name: '童年的终结'
-          }]
-        }, {
-          name: '3☆',
-          children: [{
-            name: '疯癫老人日记'
-          }]
-        }]
-      }, {
-        name: '其他',
-        children: [{
-          name: '5☆',
-          children: [{
-            name: '纳博科夫短篇小说全集'
-          }]
-        }, {
-          name: '4☆',
-          children: [{
-            name: '安魂曲'
-          }, {
-            name: '人生拼图版'
-          }]
-        }, {
-          name: '3☆',
-          children: [{
-            name: '比起爱你，我更需要你'
-          }]
-        }]
-      }]
-    }, {
-      name: '非虚构',
-      itemStyle: {
-        color: colors[2]
-      },
-      children: [{
-        name: '设计',
-        children: [{
-          name: '5☆',
-          children: [{
-            name: '无界面交互'
-          }]
-        }, {
-          name: '4☆',
-          children: [{
-            name: '数字绘图的光照与渲染技术'
-          }, {
-            name: '日本建筑解剖书'
-          }]
-        }, {
-          name: '3☆',
-          children: [{
-            name: '奇幻世界艺术\n&RPG地图绘制讲座'
-          }]
-        }]
-      }, {
-        name: '社科',
-        children: [{
-          name: '5☆',
-          children: [{
-            name: '痛点'
-          }]
-        }, {
-          name: '4☆',
-          children: [{
-            name: '卓有成效的管理者'
-          }, {
-            name: '进化'
-          }, {
-            name: '后物欲时代的来临',
-          }]
-        }, {
-          name: '3☆',
-          children: [{
-            name: '疯癫与文明'
-          }]
-        }]
-      }, {
-        name: '心理',
-        children: [{
-          name: '5☆',
-          children: [{
-            name: '我们时代的神经症人格'
-          }]
-        }, {
-          name: '4☆',
-          children: [{
-            name: '皮格马利翁效应'
-          }, {
-            name: '受伤的人'
-          }]
-        }, {
-          name: '3☆',
-        }, {
-          name: '2☆',
-          children: [{
-            name: '迷恋'
-          }]
-        }]
-      }, {
-        name: '居家',
-        children: [{
-          name: '4☆',
-          children: [{
-            name: '把房子住成家'
-          }, {
-            name: '只过必要生活'
-          }, {
-            name: '北欧简约风格'
-          }]
-        }]
-      }, {
-        name: '绘本',
-        children: [{
-          name: '5☆',
-          children: [{
-            name: '设计诗'
-          }]
-        }, {
-          name: '4☆',
-          children: [{
-            name: '假如生活糊弄了你'
-          }, {
-            name: '博物学家的神秘动物图鉴'
-          }]
-        }, {
-          name: '3☆',
-          children: [{
-            name: '方向'
-          }]
-        }]
-      }, {
-        name: '哲学',
-        children: [{
-          name: '4☆',
-          children: [{
-            name: '人生的智慧'
-          }]
-        }]
-      }, {
-        name: '技术',
-        children: [{
-          name: '5☆',
-          children: [{
-            name: '代码整洁之道'
-          }]
-        }, {
-          name: '4☆',
-          children: [{
-            name: 'Three.js 开发指南'
-          }]
-        }]
-      }]
-    }];
+<ul>
+<li>出生年月：1993/10</li>
+<li>邮箱：1853991699@qq.com</li>
+<li>所在城市：河南郑州</li>
+<li>毕业学校：厦门大学</li>
+<li>专业：计算机科学与技术</li>
+</ul>
 
-    for (var j = 0; j < data.length; ++j) {
-      var level1 = data[j].children;
-      for (var i = 0; i < level1.length; ++i) {
-        var block = level1[i].children;
-        var bookScore = [];
-        var bookScoreId;
-        for (var star = 0; star < block.length; ++star) {
-          var style = (function (name) {
-            switch (name) {
-              case '5☆':
-                bookScoreId = 0;
-                return itemStyle.star5;
-              case '4☆':
-                bookScoreId = 1;
-                return itemStyle.star4;
-              case '3☆':
-                bookScoreId = 2;
-                return itemStyle.star3;
-              case '2☆':
-                bookScoreId = 3;
-                return itemStyle.star2;
-            }
-          })(block[star].name);
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>个人能力</h2>
 
-          block[star].label = {
-            color: style.color,
-            downplay: {
-              opacity: 0.5
-            }
-          };
+</hgroup><article>
 
-          if (block[star].children) {
-            style = {
-              opacity: 1,
-              color: style.color
-            };
-            block[star].children.forEach(function (book) {
-              book.value = 1;
-              book.itemStyle = style;
+<button class="btn btn-lg btn-default"> HTML </button>  <button class="btn btn-lg btn-primary">CSS</button> <button class="btn btn-lg btn-warning">JS</button> <button class="btn btn-lg btn-success">jQuery</button> <button class="btn btn-lg  btn-danger">node.js</button> <button class="btn btn-lg btn-primary">React</button> <button class="btn btn-lg btn-warning">React Native</button>
+</article></section></slide>
+        
 
-              book.label = {
-                color: style.color
-              };
-
-              var value = 1;
-              if (bookScoreId === 0 || bookScoreId === 3) {
-                value = 5;
-              }
-
-              if (bookScore[bookScoreId]) {
-                bookScore[bookScoreId].value += value;
-              }
-              else {
-                bookScore[bookScoreId] = {
-                  color: colors[bookScoreId],
-                  value: value
-                };
-              }
-            });
-          }
-        }
-
-        level1[i].itemStyle = {
-          color: data[j].itemStyle.color
-        };
-      }
-    }
-
-    option = {
-      backgroundColor: bgColor,
-      color: colors,
-      series: [{
-        type: 'sunburst',
-        center: ['50%', '48%'],
-        data: data,
-        sort: function (a, b) {
-          if (a.depth === 1) {
-            return b.getValue() - a.getValue();
-          }
-          else {
-            return a.dataIndex - b.dataIndex;
-          }
-        },
-        label: {
-          rotate: 'radial',
-          color: bgColor
-        },
-        itemStyle: {
-          borderColor: bgColor,
-          borderWidth: 2
-        },
-        levels: [{}, {
-          r0: 0,
-          r: 40,
-          label: {
-            rotate: 0
-          }
-        }, {
-          r0: 40,
-          r: 105
-        }, {
-          r0: 115,
-          r: 140,
-          itemStyle: {
-            shadowBlur: 2,
-            shadowColor: colors[2],
-            color: 'transparent'
-          },
-          label: {
-            rotate: 'tangential',
-            fontSize: 10,
-            color: colors[0]
-          }
-        }, {
-          r0: 140,
-          r: 145,
-          itemStyle: {
-            shadowBlur: 80,
-            shadowColor: colors[0]
-          },
-          label: {
-            position: 'outside',
-            textShadowBlur: 5,
-            textShadowColor: '#333',
-          },
-          downplay: {
-            label: {
-              opacity: 0.5
-            }
-          }
-        }]
-      }]
-    };
-    ;
-    if (option && typeof option === "object") {
-      myChart.setOption(option, true);
-    }
-  </script>
-</body>
-
-</html>
-
-</body>
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/diaspora.js"></script>
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
+        <!-- <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+                <h2 style="color: white;">Powered By nodeppt v1.4.5</h2>
+            </article>
+        </slide> -->
+        <div class="slideTip" id="tip"></div>
+    </slides>
 </div>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+<div class="progress"><span id="progress"></span></div>
+<div id="_buttons">
+    <div class="_btn-box" id="_btn-box" style="display:none;">
+        <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+        <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+        <button class="fa fa-paint-brush" id="_btn-brush"></button>
+        <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+    </div>
+    <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+</div>
+<script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+<script>
+    var ASSET_RELATIVE_DIR = ".";
+</script>
+<script>
+var base = location.protocol + '//' + location.host;
 
+var path = (location.pathname + '#').split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+if (typeof ASSET_RELATIVE_DIR === 'string') {
+    path = path + '/' + ASSET_RELATIVE_DIR;
+}
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
 
+</script>
+<script src="./js/mixjs/lib/event/broadcast.js"></script>
+<script src="./js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'slide3',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/highlight.pack.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+<script src="./js/demo.js"></script>
+<link rel="stylesheet" href="./css/demo.css">
+<script src="./js/zoom.js"></script>
 
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  config: ["TeX-AMS-MML_HTMLorMML.js"],
+  tex2jax: {inlineMath: [['\\(','\\)']]}});
+  //['$','$'], 避免货币价格冲突
+</script>
+<script type="text/javascript" src="./js/mathjax/MathJax.js"></script>
 
+<!--placeholder-->
+</body>
 </html>
