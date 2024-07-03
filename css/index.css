@@ -1780,6 +1780,9 @@ hr {
   overflow: visible;
   display: none;
 }
+pre {
+  font-family: monospace, monospace;
+}
 a {
   color: var(--efu-fontcolor);
   text-decoration: none;
@@ -1797,8 +1800,7 @@ strong {
 }
 code,
 kbd,
-samp,
-pre {
+samp {
   font-family: monospace, monospace;
   font-size: 16px;
 }
